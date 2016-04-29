@@ -4,7 +4,8 @@
 
     <item android:id="@+id/actionSettings"
         android:title="Setting"
-        app:showAsAction="never"
+        android:icon="@drawable/ic_launcher"
+        app:showAsAction="ifRoom"
         />
 
 </menu>
