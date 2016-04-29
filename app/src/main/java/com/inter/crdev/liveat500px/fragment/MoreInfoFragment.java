@@ -46,6 +46,7 @@ public class MoreInfoFragment extends Fragment {
         super.onCreate(savedInstanceState);
         init(savedInstanceState);
 
+
         if (savedInstanceState != null)
             onRestoreInstanceState(savedInstanceState);
 
