@@ -2,6 +2,7 @@ package com.inter.crdev.liveat500px.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.inter.crdev.liveat500px.R;
@@ -30,6 +31,12 @@ public class MoreInfoActivity extends AppCompatActivity {
     private void initInstances() {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_more_info,menu);
+        return true;
     }
 
     @Override
