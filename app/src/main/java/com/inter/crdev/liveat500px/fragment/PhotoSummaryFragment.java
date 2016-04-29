@@ -6,8 +6,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.inter.crdev.liveat500px.R;
+import com.inter.crdev.liveat500px.configuation.GlideConfiguation;
 import com.inter.crdev.liveat500px.dao.PhotoItemDao;
 
 
@@ -22,6 +27,10 @@ public class PhotoSummaryFragment extends Fragment {
     }
 
     PhotoItemDao dao;
+
+    ImageView ivImg;
+    TextView tvName,tvDescription;
+
     @SuppressWarnings("unused")
     public static PhotoSummaryFragment newInstance(PhotoItemDao dao) {
         PhotoSummaryFragment fragment = new PhotoSummaryFragment();
@@ -59,6 +68,18 @@ public class PhotoSummaryFragment extends Fragment {
     @SuppressWarnings("UnusedParameters")
     private void initInstances(View rootView, Bundle savedInstanceState) {
         // Init 'View' instance(s) with rootView.findViewById here
+        ivImg = (ImageView) rootView.findViewById(R.id.ivImg);
+        tvName = (TextView) rootView.findViewById(R.id.tvName);
+        tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
+
+        tvName.setText(dao.getCapTion());
+        tvDescription.setText(dao.getUserName() + "\n" + dao.getCamera());
+        Glide.with(PhotoSummaryFragment.this)
+                .load(dao.getImageUrl())
+                .placeholder(R.drawable.loading)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(ivImg);
+
     }
 
     @Override
